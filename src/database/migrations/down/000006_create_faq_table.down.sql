@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS frequenty_asked_questions ;
+DROP TABLE IF EXISTS frequently_asked_questions ;
