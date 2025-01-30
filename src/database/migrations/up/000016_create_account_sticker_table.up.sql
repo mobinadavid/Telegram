@@ -5,10 +5,10 @@ create table if not exists account_stickers
 
     account_id      bigint not null
     constraint fk_account_stickers_account
-    references accounts,
+    references accounts on delete cascade,
     sticker_id bigint not null
     constraint fk_account_stickers_sticker
-    references stickers,
+    references stickers on delete cascade,
     primary key (account_id, sticker_id)
     );
 

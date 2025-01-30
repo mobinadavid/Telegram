@@ -5,10 +5,10 @@ create table if not exists account_emoji
 
     account_id      bigint not null
     constraint fk_account_emoji_account
-    references accounts,
+    references accounts on delete cascade,
     emoji_id bigint not null
     constraint fk_account_emoji_emoji
-    references emojis,
+    references emojis  on delete cascade,
     primary key (account_id, emoji_id)
     );
 
