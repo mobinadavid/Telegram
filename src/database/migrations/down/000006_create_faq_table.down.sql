@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS frequenty_asked_questions ;
