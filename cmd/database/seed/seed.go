@@ -5,6 +5,7 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 	"telegram/src/database/pgx"
+	"telegram/src/database/seeders"
 	"time"
 )
 
@@ -17,16 +18,9 @@ var Seed = &cobra.Command{
 		beforeMigrate()
 
 		// add seeders
-		log.Println("Starting seeding table...    " + "timestamp" + time.Now().String())
-		//seeders.ProfileSeeder()
-		//seeders.CustomerSeeder()
-		//seeders.EmployeeSeeder()
-		//seeders.AccountSeeder()
-		//seeders.TransactionSeeder()
-		//seeders.LoanSeeder()
-		//seeders.InstallmentSeeder()
-
-		log.Println("seeding table successfully.    " + "timestamp" + time.Now().String())
+		log.Println("Starting seeding table...  ")
+		seeders.AccountSeeder()
+		log.Println("seeding table successfully. ")
 
 		afterMigrate()
 	},
