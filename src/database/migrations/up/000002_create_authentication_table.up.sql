@@ -1,7 +1,7 @@
 create table if not exists authentication
 (
     id                       bigserial primary key,
-    owner_id                 bigint UNIQUE,
+    owner_id                 bigint,
     access_token             text not null,
     access_token_expires_at  timestamp with time zone,
     refresh_token            text not null,
