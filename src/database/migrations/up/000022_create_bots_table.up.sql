@@ -4,7 +4,7 @@ create table if not exists bots
     name                 VARCHAR(255) NOT NULL,
     description          VARCHAR(255),
     owner_id             bigint NOT NULL,
-    subscribers_count    bigint default 1,
+    subscribers_count    bigint default 0,
     username             VARCHAR(255),
     created_at  timestamp with time zone,
     updated_at  timestamp with time zone,

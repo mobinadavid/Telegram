@@ -15,15 +15,17 @@ create table if not exists contacts
 CREATE OR REPLACE FUNCTION create_chat_on_join()
     RETURNS TRIGGER AS $$
 BEGIN
-INSERT INTO chats (account_id, chat_id, chat_type)
-VALUES (NEW.account_id, NEW.contact_id, 'account')
-    ON CONFLICT DO NOTHING;
+    -- Ensure we're inserting a chat record when a contact is added
+    INSERT INTO chats (account_id, chat_id, chat_type)
+    VALUES (NEW.account_id, NEW.cont, 'account')
+    ON CONFLICT (account_id, chat_id, chat_type) DO NOTHING;
 
-RETURN NEW;
+    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_create_chat_on_channel_join
+-- Trigger to create chat after adding contact
+CREATE TRIGGER trigger_create_chat_on_contact_add
     AFTER INSERT ON contacts
     FOR EACH ROW
-    EXECUTE FUNCTION create_chat_on_join();
+EXECUTE FUNCTION create_chat_on_join();

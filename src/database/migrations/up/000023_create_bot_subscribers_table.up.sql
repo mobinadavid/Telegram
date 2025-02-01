@@ -49,18 +49,24 @@ CREATE TRIGGER decrement_subscribers_count_trigger
     FOR EACH ROW
     EXECUTE FUNCTION decrement_subscribers_count();
 --------------
-CREATE OR REPLACE FUNCTION create_chat_on_join()
+CREATE OR REPLACE FUNCTION create_bot_chat_on_subscribe()
     RETURNS TRIGGER AS $$
 BEGIN
+    -- Insert into chats table only when a new bot subscriber joins
     INSERT INTO chats (account_id, chat_id, chat_type)
-    VALUES (NEW.account_id, NEW.bot_id, 'bot')
-    ON CONFLICT DO NOTHING;
+    VALUES (
+               NEW.account_id,
+               NEW.bot_id,
+               'bot'
+           );
 
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
+
+
 CREATE TRIGGER trigger_create_chat_on_channel_join
     AFTER INSERT ON bot_subscribers
     FOR EACH ROW
-EXECUTE FUNCTION create_chat_on_join();
+EXECUTE FUNCTION create_bot_chat_on_subscribe();
