@@ -42,6 +42,7 @@ var Seed = &cobra.Command{
 		seeders.AccountStickerPackSeeder()
 		seeders.ProfilePictureSeeder()
 		seeders.MessageSeeder()
+		seeders.MessageReplySeeder()
 		log.Println("seeding tables successfully. ")
 
 		afterMigrate()
