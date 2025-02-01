@@ -29,7 +29,8 @@ var Seed = &cobra.Command{
 		seeders.BotSeeder()
 		seeders.BotSubscriberSeeder()
 		seeders.ContactSeeder()
-		log.Println("seeding table successfully. ")
+		seeders.ChannelSeeder()
+		log.Println("seeding tables successfully. ")
 
 		afterMigrate()
 	},

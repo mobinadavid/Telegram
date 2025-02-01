@@ -19,7 +19,7 @@ func AccountSeeder() {
 		{Username: "Ali", Password: "hashed_password1", Mobile: "09122590231", Email: "ali@example.com", IsPremium: false},
 		{Username: "Hossein", Password: "hashed_password2", Mobile: "09126844764", Email: "hossein@example.com", IsPremium: false},
 		{Username: "Mohammad", Password: "hashed_password3", Mobile: "09302598945", Email: "mohammad@example.com", IsPremium: false},
-		{Username: "Mobina", Password: "hashed_password4", Mobile: "09388835773", Email: "mobina@example.com", IsPremium: true}, // Only this account is premium
+		{Username: "Mobina", Password: "hashed_password4", Mobile: "09388835773", Email: "mobina@example.com", IsPremium: true},
 		{Username: "Tina", Password: "hashed_password5", Mobile: "09389606266", Email: "tina@example.com", IsPremium: false},
 		{Username: "Sarina", Password: "hashed_password6", Mobile: "09362589749", Email: "sarina@example.com", IsPremium: false},
 	}
