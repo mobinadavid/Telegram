@@ -28,6 +28,7 @@ var Seed = &cobra.Command{
 		seeders.RolePermissionSeeder()
 		seeders.BotSeeder()
 		seeders.BotSubscriberSeeder()
+		seeders.ContactSeeder()
 		log.Println("seeding table successfully. ")
 
 		afterMigrate()

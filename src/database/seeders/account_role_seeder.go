@@ -13,7 +13,6 @@ func AccountRoleSeeder() {
 		return
 	}
 
-	// Sample account-role assignments
 	accountRoles := []struct {
 		AccountID int64
 		RoleID    int64
@@ -25,11 +24,9 @@ func AccountRoleSeeder() {
 		{AccountID: 5, RoleID: 2}, // Account 5 gets the 'SuperAdmin' role
 	}
 
-	// SQL query to insert account-role mappings
 	query := `INSERT INTO account_role (account_id, role_id) 
 	          VALUES ($1, $2)`
 
-	// Insert each account-role mapping
 	for _, accountRole := range accountRoles {
 		_, err := db.Exec(context.Background(), query, accountRole.AccountID, accountRole.RoleID)
 		if err != nil {

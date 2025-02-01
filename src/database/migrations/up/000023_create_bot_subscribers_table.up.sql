@@ -52,14 +52,12 @@ CREATE TRIGGER decrement_subscribers_count_trigger
 CREATE OR REPLACE FUNCTION create_bot_chat_on_subscribe()
     RETURNS TRIGGER AS $$
 BEGIN
-    -- Insert into chats table only when a new bot subscriber joins
-    INSERT INTO chats (account_id, chat_id, chat_type)
+    INSERT INTO chats (account_id, type_id, chat_type)
     VALUES (
-               NEW.account_id,
-               NEW.bot_id,
-               'bot'
+               NEW.account_id,  -- The account that joined the bot
+               NEW.bot_id,      -- The bot the account joined
+               'bot'          -- The chat type is 'bot'
            );
-
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

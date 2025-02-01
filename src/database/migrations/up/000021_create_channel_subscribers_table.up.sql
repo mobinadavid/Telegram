@@ -55,7 +55,7 @@ EXECUTE FUNCTION decrement_subscribers_count();
 CREATE OR REPLACE FUNCTION create_chat_on_join()
     RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO chats (account_id, chat_id, chat_type)
+    INSERT INTO chats (account_id, bot_id, chat_type)
     VALUES (NEW.account_id, NEW.channel_id, 'channel')
     ON CONFLICT DO NOTHING;
 
