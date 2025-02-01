@@ -34,6 +34,8 @@ var Seed = &cobra.Command{
 		seeders.GroupSeeder()
 		seeders.GroupMemberSeeder()
 		seeders.PrivateChatSeeder()
+		seeders.EmojiSeeder()
+		seeders.AccountEmojiSeeder()
 		log.Println("seeding tables successfully. ")
 
 		afterMigrate()
