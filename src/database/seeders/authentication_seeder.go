@@ -30,6 +30,6 @@ func AuthenticationSeeder() {
 			log.Printf("Failed to seed authentication for account ID %d: %v", accountID, err)
 		}
 	}
-	log.Printf("Successfully seeded authentication for account ID ")
+	log.Printf("Successfully seeded authentication for account ")
 
 }
