@@ -33,6 +33,7 @@ var Seed = &cobra.Command{
 		seeders.ChannelSubscriberSeeder()
 		seeders.GroupSeeder()
 		seeders.GroupMemberSeeder()
+		seeders.PrivateChatSeeder()
 		log.Println("seeding tables successfully. ")
 
 		afterMigrate()
