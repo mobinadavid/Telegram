@@ -16,3 +16,19 @@ FOREIGN KEY (owner_id) REFERENCES accounts(id) ON DELETE CASCADE
 
     );
 CREATE INDEX IF NOT EXISTS idx_stories_owner_id ON stories(owner_id);
+
+CREATE OR REPLACE FUNCTION delete_expired_stories()
+    RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.expires_at < NOW() THEN
+        DELETE FROM stories WHERE id = NEW.id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER delete_expired_story_trigger
+    AFTER INSERT OR UPDATE ON stories
+    FOR EACH ROW
+EXECUTE FUNCTION delete_expired_stories();

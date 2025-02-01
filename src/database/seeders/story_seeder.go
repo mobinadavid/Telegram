@@ -17,8 +17,8 @@ func StorySeeder() {
 
 	// Sample story data
 	stories := []models.Story{
-		{OwnerID: 6, ContentType: "image", ContentURL: "/uploads/stories/image1.jpg", Caption: "My first story!", ViewsCount: 50, ExpiresAt: time.Now().Add(24 * time.Hour), CreatedAt: time.Now(), UpdatedAt: time.Now()},
-		{OwnerID: 4, ContentType: "text", ContentURL: "/uploads/stories/text1.txt", Caption: "This is a text story", ViewsCount: 10, ExpiresAt: time.Now().Add(24 * time.Hour), CreatedAt: time.Now(), UpdatedAt: time.Now()},
+		{OwnerID: 6, ContentType: "image", ContentURL: "/uploads/stories/image1.jpg", Caption: "My first story!", ViewsCount: 0, ExpiresAt: time.Now().Add(24 * time.Hour), CreatedAt: time.Now(), UpdatedAt: time.Now()},
+		{OwnerID: 4, ContentType: "text", ContentURL: "/uploads/stories/text1.txt", Caption: "This is a text story", ViewsCount: 0, ExpiresAt: time.Now().Add(24 * time.Hour), CreatedAt: time.Now(), UpdatedAt: time.Now()},
 	}
 
 	// SQL query to insert data into stories table
