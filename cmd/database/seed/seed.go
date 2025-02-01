@@ -38,6 +38,8 @@ var Seed = &cobra.Command{
 		seeders.AccountEmojiSeeder()
 		seeders.StickerPackSeeder()
 		seeders.StickerSeeder()
+		seeders.AccountStickerSeeder()
+		seeders.AccountStickerPackSeeder()
 		log.Println("seeding tables successfully. ")
 
 		afterMigrate()
