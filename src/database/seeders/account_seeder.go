@@ -25,24 +25,14 @@ func AccountSeeder() {
 	}
 
 	query := `INSERT INTO accounts (username, password, mobile, email, created_at, updated_at) 
-	          VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`
+	          VALUES ($1, $2, $3, $4, $5, $6) ;`
 
 	for _, account := range accounts {
-		var accountID int64
-		err := db.QueryRow(context.Background(), query, account.Username, account.Password, account.Mobile, account.Email, time.Now(), time.Now()).Scan(&accountID)
+		_, err := db.Exec(context.Background(), query, account.Username, account.Password, account.Mobile, account.Email, time.Now(), time.Now())
 		if err != nil {
 			log.Printf("Failed to seed account %s: %v", account.Username, err)
-			continue
 		}
-
-		settingID, err := SettingSeeder(accountID)
-		if err != nil {
-			continue
-		}
-
-		PrivacyAndSecuritySeeder(settingID)
-		NotificationAndSoundSeeder(settingID)
 	}
+	log.Printf("Successfully seeded account ")
 
-	log.Println("Successfully seeded accounts with settings, privacy, and notifications")
 }
