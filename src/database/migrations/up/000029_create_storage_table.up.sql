@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS storage (
     FOREIGN KEY (uploader_id) REFERENCES accounts(id) ON DELETE CASCADE,
     FOREIGN KEY (message_id) REFERENCES messages(id) ON DELETE CASCADE,
     FOREIGN KEY (message_reply_id) REFERENCES message_replies(id) ON DELETE CASCADE,
-    FOREIGN KEY (chat_id) REFERENCES chats(chat_id) ON DELETE CASCADE
+    FOREIGN KEY (chat_id) REFERENCES chats(id) ON DELETE CASCADE
     );
 
 CREATE INDEX IF NOT EXISTS idx_storage_chat ON storage(chat_id);

@@ -50,23 +50,3 @@ CREATE TRIGGER decrement_subscribers_count_trigger_channel
     AFTER DELETE ON channel_subscribers
     FOR EACH ROW
 EXECUTE FUNCTION decrement_subscribers_count_channel();
---------------
-
-CREATE OR REPLACE FUNCTION create_chat_on_channel_add()
-    RETURNS TRIGGER AS $$
-BEGIN
-    INSERT INTO chats (account_id, type_id, chat_type)
-    VALUES (
-               NEW.account_id,  -- The account that joined the bot
-               NEW.channel_id,      -- The bot the account joined
-               'channel'          -- The chat type is 'bot'
-           );
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Trigger to create chat after adding contact
-CREATE TRIGGER trigger_create_chat_on_channel_add
-    AFTER INSERT ON channel_subscribers
-    FOR EACH ROW
-EXECUTE FUNCTION create_chat_on_channel_add();

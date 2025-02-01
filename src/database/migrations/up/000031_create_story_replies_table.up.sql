@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS story_replies (
 
     FOREIGN KEY (owner_id) REFERENCES accounts(id) ON DELETE CASCADE,
     FOREIGN KEY (story_id) REFERENCES stories(id) ON DELETE CASCADE,
-         FOREIGN KEY (chat_id) REFERENCES chats(chat_id) ON DELETE CASCADE
+         FOREIGN KEY (chat_id) REFERENCES chats(id) ON DELETE CASCADE
 
 
 

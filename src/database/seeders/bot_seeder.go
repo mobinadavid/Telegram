@@ -15,30 +15,41 @@ func BotSeeder() {
 		return
 	}
 
-	bots := []models.Bot{
+	// Sample bots to seed
+	bots := []models.BotModel{
 		{
-			Name:        "BotOne",
-			Description: "This is Bot One description.",
-			OwnerID:     1, // Assuming the account with ID 1 is the owner
-			Username:    "botone",
+			Name:             "WeatherBot",
+			Description:      "A bot that provides weather updates.",
+			OwnerID:          1,
+			SubscribersCount: 0,
+			Username:         "weatherbot",
+			CreatedAt:        time.Now(),
+			UpdatedAt:        time.Now(),
 		},
 		{
-			Name:        "BotTwo",
-			Description: "This is Bot Two description.",
-			OwnerID:     2, // Assuming the account with ID 2 is the owner
-			Username:    "bottwo",
+			Name:             "NewsBot",
+			Description:      "A bot that delivers the latest news.",
+			OwnerID:          4,
+			SubscribersCount: 0,
+			Username:         "newsbot",
+			CreatedAt:        time.Now(),
+			UpdatedAt:        time.Now(),
 		},
 	}
 
-	query := `INSERT INTO bots (name, description, owner_id, username, created_at, updated_at)
-			  VALUES ($1, $2, $3, $4, $5, $6);`
+	// SQL query to insert bots
+	query := `INSERT INTO bots (name, description, owner_id, subscribers_count, username, created_at, updated_at)
+	          VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`
 
+	// Insert each bot
 	for _, bot := range bots {
-		_, err := db.Exec(context.Background(), query, bot.Name, bot.Description, bot.OwnerID, bot.Username, time.Now(), time.Now())
+		var botID int64
+		err := db.QueryRow(context.Background(), query, bot.Name, bot.Description, bot.OwnerID, bot.SubscribersCount, bot.Username, bot.CreatedAt, bot.UpdatedAt).Scan(&botID)
 		if err != nil {
-			log.Printf("Failed to seed bot %s: %v", bot.Name, err)
+			log.Printf("Failed to seed bot: %s - %v", bot.Name, err)
+			continue
 		}
 	}
 
-	log.Printf("Successfully seeded bots")
+	log.Println("Successfully seeded bots")
 }

@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS messages (
             deleted_at  TIMESTAMP WITH TIME ZONE,
 
             FOREIGN KEY (sender_id) REFERENCES accounts(id) ON DELETE CASCADE,
-          FOREIGN KEY ( chat_id) REFERENCES chats( chat_id) ON DELETE CASCADE
+          FOREIGN KEY ( chat_id) REFERENCES chats(id) ON DELETE CASCADE
     );
 
 CREATE INDEX IF NOT EXISTS idx_messages_chat_id ON messages(chat_id);
