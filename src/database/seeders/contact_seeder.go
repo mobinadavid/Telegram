@@ -17,9 +17,11 @@ func ContactSeeder() {
 	contacts := []models.ContactModel{
 		{AccountID: 1, ContactID: 2, IsFavorite: true, IsBlocked: false},  // Ali & Hossein
 		{AccountID: 2, ContactID: 1, IsFavorite: true, IsBlocked: false},  // Hossein & Ali
-		{AccountID: 1, ContactID: 3, IsFavorite: false, IsBlocked: false}, // Ali & Mohammad
+		{AccountID: 1, ContactID: 4, IsFavorite: false, IsBlocked: false}, // Ali & Mobina
 		{AccountID: 2, ContactID: 4, IsFavorite: true, IsBlocked: false},  // Hossein & Mobina
-		{AccountID: 3, ContactID: 5, IsFavorite: false, IsBlocked: false}, // Mohammad & Tina
+		{AccountID: 3, ContactID: 2, IsFavorite: false, IsBlocked: false}, // Mohammad & Hossein
+		{AccountID: 3, ContactID: 4, IsFavorite: false, IsBlocked: false}, // Mohammad & Mobina
+		{AccountID: 3, ContactID: 6, IsFavorite: false, IsBlocked: false}, // Mohammad & Sarina
 		{AccountID: 4, ContactID: 6, IsFavorite: true, IsBlocked: false},  // Mobina & Sarina
 		{AccountID: 5, ContactID: 1, IsFavorite: true, IsBlocked: false},  // Tina & Ali
 	}

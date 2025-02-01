@@ -16,11 +16,14 @@ func AccountStickerSeeder() {
 	}
 
 	accountStickers := []models.AccountSticker{
-		{AccountID: 1, StickerID: 1, UsedAt: timePtr(time.Now().Add(-24 * time.Hour)), UsageCount: 10},
-		{AccountID: 2, StickerID: 2, UsedAt: timePtr(time.Now().Add(-48 * time.Hour)), UsageCount: 5},
+		{AccountID: 3, StickerID: 1, UsedAt: timePtr(time.Now().Add(-24 * time.Hour)), UsageCount: 10},
+		{AccountID: 3, StickerID: 2, UsedAt: timePtr(time.Now().Add(-48 * time.Hour)), UsageCount: 5},
 		{AccountID: 3, StickerID: 3, UsedAt: timePtr(time.Now().Add(-72 * time.Hour)), UsageCount: 8},
 		{AccountID: 4, StickerID: 4, UsedAt: timePtr(time.Now().Add(-96 * time.Hour)), UsageCount: 3},
-		{AccountID: 5, StickerID: 5, UsedAt: timePtr(time.Now().Add(-120 * time.Hour)), UsageCount: 6},
+		{AccountID: 3, StickerID: 5, UsedAt: timePtr(time.Now().Add(-120 * time.Hour)), UsageCount: 6},
+		{AccountID: 1, StickerID: 1, UsedAt: timePtr(time.Now().Add(-24 * time.Hour)), UsageCount: 10},
+		{AccountID: 2, StickerID: 2, UsedAt: timePtr(time.Now().Add(-48 * time.Hour)), UsageCount: 5},
+		{AccountID: 1, StickerID: 3, UsedAt: timePtr(time.Now().Add(-72 * time.Hour)), UsageCount: 8},
 	}
 
 	query := `INSERT INTO account_stickers (account_id, sticker_id, used_at, usage_count) VALUES ($1, $2, $3, $4);`

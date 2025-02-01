@@ -3,6 +3,7 @@ package database
 import (
 	"github.com/spf13/cobra"
 	"telegram/cmd/database/migrate"
+	"telegram/cmd/database/query"
 	"telegram/cmd/database/seed"
 )
 
@@ -16,5 +17,6 @@ func init() {
 	DatabaseCmd.AddCommand(
 		migrate.Migrate,
 		seed.Seed,
+		query.Query,
 	)
 }

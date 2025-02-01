@@ -16,11 +16,11 @@ func MessageReplySeeder() {
 	}
 
 	messageReplies := []models.MessageReply{
-		{Content: "I agree with you!", SenderID: 2, ReplyTo: 1},    // Replying to message 1
+		{Content: "I agree with you!", SenderID: 2, ReplyTo: 4},    // Replying to message 1
 		{Content: "I'll be there!", SenderID: 3, ReplyTo: 2},       // Replying to message 2
 		{Content: "That's awesome!", SenderID: 4, ReplyTo: 3},      // Replying to message 3
-		{Content: "Let's meet tomorrow!", SenderID: 5, ReplyTo: 4}, // Replying to message 4
-		{Content: "Got it, thanks!", SenderID: 6, ReplyTo: 5},      // Replying to message 5
+		{Content: "Let's meet tomorrow!", SenderID: 5, ReplyTo: 5}, // Replying to message 7
+		{Content: "Got it, thanks!", SenderID: 6, ReplyTo: 6},      // Replying to message 6
 	}
 
 	query := `INSERT INTO message_replies (content, sender_id, reply_to, created_at, updated_at) 

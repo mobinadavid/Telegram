@@ -19,10 +19,10 @@ func MessageSeeder() {
 	messages := []models.Message{
 		{Content: "Hello, how are you?", SenderID: 3, ChatID: 10},
 		{Content: "I'm good, thanks for asking!", SenderID: 4, ChatID: 10},
-		{Content: "Are you coming to the party tomorrow?", SenderID: 2, ChatID: 7},
+		{Content: "Are you coming to the party tomorrow?", SenderID: 2, ChatID: 6},
 		{Content: "Yes, I will be there.", SenderID: 3, ChatID: 7},
-		{Content: "Hey, don't forget the meeting at 3 PM.", SenderID: 1, ChatID: 9},
-		{Content: "Got it, see you then!", SenderID: 2, ChatID: 9},
+		{Content: "Hey, don't forget the meeting at 3 PM.", SenderID: 1, ChatID: 6},
+		{Content: "Got it, see you then!", SenderID: 2, ChatID: 8},
 	}
 
 	query := `INSERT INTO messages (content, sender_id, chat_id, created_at, updated_at) 
