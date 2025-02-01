@@ -25,7 +25,7 @@ func MessageSeeder() {
 		{Content: "Got it, see you then!", SenderID: 2, ChatID: 9},
 	}
 
-	query := `INSERT INTO messages (context, sender_id, chat_id, created_at, updated_at) 
+	query := `INSERT INTO messages (content, sender_id, chat_id, created_at, updated_at) 
 	          VALUES ($1, $2, $3, $4, $5);`
 
 	for _, message := range messages {

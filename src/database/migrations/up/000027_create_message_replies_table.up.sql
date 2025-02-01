@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS message_replies (
         id          BIGSERIAL PRIMARY KEY,
-        context     TEXT NOT NULL,
+        content     TEXT NOT NULL,
         sender_id   BIGINT NOT NULL,
         reply_to   BIGINT NOT NULL,
     created_at  TIMESTAMP WITH TIME ZONE DEFAULT now(),

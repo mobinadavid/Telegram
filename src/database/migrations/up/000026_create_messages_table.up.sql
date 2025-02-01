@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS messages (
             id          BIGSERIAL PRIMARY KEY,
-            context     TEXT NOT NULL,
+            content     TEXT NOT NULL,
             sender_id   BIGINT NOT NULL,
             chat_id   BIGINT NOT NULL,
             created_at  TIMESTAMP WITH TIME ZONE DEFAULT now(),

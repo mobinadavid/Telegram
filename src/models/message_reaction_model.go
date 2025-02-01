@@ -2,11 +2,11 @@ package models
 
 import "time"
 
-type MessageReply struct {
+type MessageReaction struct {
 	ID        int64      `json:"id"`
-	Content   string     `json:"context"`
 	SenderID  int64      `json:"sender_id"`
-	ReplyTo   int64      `json:"reply_to"`
+	ReactedTo int64      `json:"reacted_to"`
+	EmojiID   int64      `json:"emoji_id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at"`
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`

@@ -1,6 +1,5 @@
 CREATE TABLE IF NOT EXISTS message_reactions (
         id          BIGSERIAL PRIMARY KEY,
-        context     TEXT NOT NULL,
         sender_id   BIGINT NOT NULL,
         reacted_to   BIGINT NOT NULL,
         emoji_id     BIGINT NOT NULL,
