@@ -22,3 +22,20 @@ create unique index if not exists idx_accounts_mobile
 
 create unique index if not exists idx_accounts_email
     on accounts (email);
+
+
+CREATE OR REPLACE FUNCTION create_profile_on_account_creation()
+    RETURNS trigger AS
+    $$
+        BEGIN
+        INSERT INTO profile (owner_id, first_name, last_name, bio, created_at, updated_at)
+    VALUES (NEW.id, NEW.username, '', '', NOW(), NOW());
+        RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER trigger_create_profile
+    AFTER INSERT ON accounts
+    FOR EACH ROW
+    EXECUTE FUNCTION create_profile_on_account_creation();

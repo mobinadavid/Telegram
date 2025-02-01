@@ -21,6 +21,8 @@ var Seed = &cobra.Command{
 		log.Println("Starting seeding table...  ")
 		seeders.AccountSeeder()
 		seeders.AuthenticationSeeder()
+		seeders.FAQSeeder()
+		seeders.ProfileSeeder()
 		log.Println("seeding table successfully. ")
 
 		afterMigrate()
