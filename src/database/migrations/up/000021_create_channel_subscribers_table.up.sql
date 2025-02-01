@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS channel_subscribers
 
 
 -- Function to increment member count
-CREATE OR REPLACE FUNCTION increment_subscribers_count()
+CREATE OR REPLACE FUNCTION increment_subscribers_count_channel()
     RETURNS TRIGGER AS $$
 BEGIN
     -- Increment the member count for the group by 1
@@ -27,14 +27,14 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Trigger to increment member count after an insert
-CREATE TRIGGER increment_subscriber_count_trigger
+CREATE TRIGGER increment_subscriber_count_trigger_channel
     AFTER INSERT ON channel_subscribers
     FOR EACH ROW
-EXECUTE FUNCTION increment_subscribers_count();
+EXECUTE FUNCTION increment_subscribers_count_channel();
 
 
 -- Function to decrement member count
-CREATE OR REPLACE FUNCTION decrement_subscribers_count()
+CREATE OR REPLACE FUNCTION decrement_subscribers_count_channel()
     RETURNS TRIGGER AS $$
 BEGIN
     -- Decrement the member count for the group by 1
@@ -46,24 +46,27 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Trigger to decrement member count after a delete
-CREATE TRIGGER decrement_subscribers_count_trigger
+CREATE TRIGGER decrement_subscribers_count_trigger_channel
     AFTER DELETE ON channel_subscribers
     FOR EACH ROW
-EXECUTE FUNCTION decrement_subscribers_count();
-----------------
+EXECUTE FUNCTION decrement_subscribers_count_channel();
+--------------
 
-CREATE OR REPLACE FUNCTION create_chat_on_join()
+CREATE OR REPLACE FUNCTION create_chat_on_channel_add()
     RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO chats (account_id, bot_id, chat_type)
-    VALUES (NEW.account_id, NEW.channel_id, 'channel')
-    ON CONFLICT DO NOTHING;
-
+    INSERT INTO chats (account_id, type_id, chat_type)
+    VALUES (
+               NEW.account_id,  -- The account that joined the bot
+               NEW.channel_id,      -- The bot the account joined
+               'channel'          -- The chat type is 'bot'
+           );
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_create_chat_on_channel_join
+-- Trigger to create chat after adding contact
+CREATE TRIGGER trigger_create_chat_on_channel_add
     AFTER INSERT ON channel_subscribers
     FOR EACH ROW
-EXECUTE FUNCTION create_chat_on_join();
+EXECUTE FUNCTION create_chat_on_channel_add();

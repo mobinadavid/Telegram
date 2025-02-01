@@ -18,6 +18,7 @@ FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
 CREATE OR REPLACE FUNCTION validate_chat_type_and_type_id()
     RETURNS TRIGGER AS $$
 BEGIN
+
     -- For 'bot' type, check that type_id exists in the bots table
     IF NEW.chat_type = 'bot' THEN
         IF NOT EXISTS (SELECT 1 FROM bots WHERE id = NEW.type_id) THEN
