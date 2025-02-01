@@ -44,6 +44,8 @@ var Seed = &cobra.Command{
 		seeders.MessageSeeder()
 		seeders.MessageReplySeeder()
 		seeders.MessageReactionSeeder()
+		seeders.StorageSeeder()
+		seeders.StorySeeder()
 		log.Println("seeding tables successfully. ")
 
 		afterMigrate()

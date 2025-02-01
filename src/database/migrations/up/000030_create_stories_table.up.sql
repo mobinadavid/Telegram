@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS stories (
    content_url       TEXT NOT NULL,
    caption           TEXT,
    views_count      bigint default 0,
-   expires_at      TIMESTAMP WITH TIME ZONE DEFAULT NOW() + INTERVAL '1 day',
+    expires_at      TIMESTAMP WITH TIME ZONE DEFAULT NOW() + INTERVAL '1 day',
     created_at  TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated_at  TIMESTAMP WITH TIME ZONE DEFAULT now(),
     deleted_at  TIMESTAMP WITH TIME ZONE,
