@@ -22,27 +22,19 @@ services:
       retries: 5
 
   # CockroachDB Service
-  cockroachdb:
-    image: cockroachdb/cockroach:v22.1.8
+  crdb:
+    image: cockroachdb/cockroach:latest
     container_name: cockroachdb.${APP_NAME}
-    restart: unless-stopped
     ports:
-      - ${COCKROACH_PORT:-26257}:26257
-      - ${COCKROACH_HTTP_PORT:-8080}:8080
-    environment:
-      - COCKROACH_DATABASE=${DB_DATABASE}
-      - COCKROACH_USER=${DB_USERNAME}
-      - COCKROACH_PASSWORD=${DB_PASSWORD}
-      - COCKROACH_HOST=${DB_HOST}
-      - COCKROACH_PORT=${COCKROACH_PORT}
+      - "26257:26257"
+      - "8080:8080"
+    command: start-single-node --insecure
     volumes:
-      - cockroach:/cockroach/cockroach-data
+      - "${PWD}/cockroach-data/crdb:/cockroach/cockroach-data"
     networks:
       - telegram
-    command:
-      - "start-single-node"
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:${COCKROACH_HTTP_PORT}/_status/health" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/_status/health" ]
       interval: 10s
       timeout: 5s
       retries: 5
