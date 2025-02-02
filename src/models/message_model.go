@@ -7,6 +7,7 @@ type Message struct {
 	Content   string     `json:"Content"`
 	SenderID  int64      `json:"sender_id"`
 	ChatID    int64      `json:"chat_id"`
+	RepliedTo *int64     `json:"replied_to"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at"`
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`

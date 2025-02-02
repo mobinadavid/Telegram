@@ -16,7 +16,7 @@ func AccountSeeder() {
 	}
 
 	accounts := []models.Account{
-		{Username: "Ali", Password: "hashed_password1", Mobile: "09122590231", Email: "ali@example.com", IsPremium: false},
+		{Username: "Ali", Password: "hashed_password1", Mobile: "09122590238", Email: "ali@example.com", IsPremium: false},
 		{Username: "Hossein", Password: "hashed_password2", Mobile: "09126844764", Email: "hossein@example.com", IsPremium: false},
 		{Username: "Mohammad", Password: "hashed_password3", Mobile: "09302598945", Email: "mohammad@example.com", IsPremium: false},
 		{Username: "Mobina", Password: "hashed_password4", Mobile: "09388835773", Email: "mobina@example.com", IsPremium: true},

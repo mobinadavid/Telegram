@@ -42,7 +42,6 @@ var Seed = &cobra.Command{
 		seeders.AccountStickerPackSeeder()
 		seeders.ProfilePictureSeeder()
 		seeders.MessageSeeder()
-		seeders.MessageReplySeeder()
 		seeders.MessageReactionSeeder()
 		seeders.StorageSeeder()
 		seeders.StorySeeder()

@@ -3,12 +3,14 @@ CREATE TABLE IF NOT EXISTS messages (
             content     TEXT NOT NULL,
             sender_id   BIGINT NOT NULL,
             chat_id   BIGINT NOT NULL,
+            replied_to  BIGINT,
             created_at  TIMESTAMP WITH TIME ZONE DEFAULT now(),
             updated_at  TIMESTAMP WITH TIME ZONE DEFAULT now(),
             deleted_at  TIMESTAMP WITH TIME ZONE,
 
             FOREIGN KEY (sender_id) REFERENCES accounts(id) ON DELETE CASCADE,
-          FOREIGN KEY ( chat_id) REFERENCES chats(id) ON DELETE CASCADE
+          FOREIGN KEY ( chat_id) REFERENCES chats(id) ON DELETE CASCADE,
+        FOREIGN KEY (replied_to) REFERENCES messages(id) ON DELETE CASCADE
     );
 
 CREATE INDEX IF NOT EXISTS idx_messages_chat_id ON messages(chat_id);

@@ -19,7 +19,7 @@ func GroupMemberSeeder() {
 	groupMembers := []models.GroupMemberModel{
 		{
 			GroupID:   6,
-			AccountID: 1,
+			AccountID: 4,
 			IsAdmin:   true,
 			JoinedAt:  time.Now(),
 			UpdatedAt: time.Now(),
@@ -48,6 +48,20 @@ func GroupMemberSeeder() {
 		{
 			GroupID:   8,
 			AccountID: 4,
+			IsAdmin:   false,
+			JoinedAt:  time.Now(),
+			UpdatedAt: time.Now(),
+		},
+		{
+			GroupID:   7,
+			AccountID: 1,
+			IsAdmin:   false,
+			JoinedAt:  time.Now(),
+			UpdatedAt: time.Now(),
+		},
+		{
+			GroupID:   8,
+			AccountID: 1,
 			IsAdmin:   false,
 			JoinedAt:  time.Now(),
 			UpdatedAt: time.Now(),

@@ -22,6 +22,9 @@ func ChannelSubscriberSeeder() {
 		{ChannelID: 4, AccountID: 4, IsAdmin: true, JoinedAt: time.Now(), UpdatedAt: time.Now()},
 		{ChannelID: 5, AccountID: 5, IsAdmin: false, JoinedAt: time.Now(), UpdatedAt: time.Now()},
 		{ChannelID: 5, AccountID: 6, IsAdmin: true, JoinedAt: time.Now(), UpdatedAt: time.Now()},
+		{ChannelID: 3, AccountID: 4, IsAdmin: true, JoinedAt: time.Now(), UpdatedAt: time.Now()},
+		{ChannelID: 3, AccountID: 3, IsAdmin: true, JoinedAt: time.Now(), UpdatedAt: time.Now()},
+		{ChannelID: 5, AccountID: 3, IsAdmin: true, JoinedAt: time.Now(), UpdatedAt: time.Now()},
 	}
 
 	query := `INSERT INTO channel_subscribers (channel_id, account_id, is_admin, joined_at, updated_at)
