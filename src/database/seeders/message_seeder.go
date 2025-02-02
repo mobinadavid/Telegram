@@ -28,6 +28,7 @@ func MessageSeeder() {
 		{Content: "Got it, see you then!", SenderID: 2, ChatID: 7, RepliedTo: nil},
 		{Content: "see you!", SenderID: 2, ChatID: 1, RepliedTo: nil},
 		{Content: "byee!", SenderID: 2, ChatID: 1, RepliedTo: nil},
+		{Content: "test!", SenderID: 4, ChatID: 6, RepliedTo: nil},
 	}
 
 	query := `INSERT INTO messages (content, sender_id, chat_id,replied_to, created_at, updated_at) 
