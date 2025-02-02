@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"telegram/src/database/cockroach"
 	"telegram/src/database/pgx"
 	"time"
 )
@@ -31,6 +32,13 @@ func Init() {
 		log.Fatalf("Database:pgx Service: Failed to Initialize: %v.", err)
 	}
 	log.Printf("Database:pgx Service: Database  initial successfully. \n")
+
+	//
+	err = cockroach.Init()
+	if err != nil {
+		log.Fatalf("Database:cockroach Service: Failed to Initialize: %v.", err)
+	}
+	log.Printf("Database:cockroach Service: Database  initial successfully. \n")
 
 	// app started ...
 	time.Sleep(50 * time.Millisecond)
