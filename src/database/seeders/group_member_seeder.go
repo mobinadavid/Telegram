@@ -47,7 +47,7 @@ func GroupMemberSeeder() {
 		},
 		{
 			GroupID:   8,
-			AccountID: 5,
+			AccountID: 4,
 			IsAdmin:   false,
 			JoinedAt:  time.Now(),
 			UpdatedAt: time.Now(),
