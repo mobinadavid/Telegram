@@ -15,6 +15,7 @@ var DatabaseCmd = &cobra.Command{
 func init() {
 	DatabaseCmd.AddCommand(
 		migrate.Migrate,
+		migrate.MigrateCockroach,
 		seed.Seed,
 	)
 }
