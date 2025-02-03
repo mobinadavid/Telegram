@@ -4,3 +4,5 @@
 /.idea/
 /.cockroach-certs
 /.cockroach-data
+cockroach-data
+cockroach-certs
